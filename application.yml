@@ -1,2 +1,42 @@
-eureka.client.serviceUrl.defaultZone=http://localhost:8761/eureka
-external.config.server.test.message= Udated Github Again
+## Eureka Server Registration
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+
+## Database Connection (MySQL)
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql@localhost:1337:dbName
+    username: root
+    password: rootuser
+
+## Connection Pooling
+spring:
+  datasource:
+    hikari:
+      ### max connections
+      maximum-pool-size: 12
+      ### if no connection allocated
+      connection-timeout: 20000
+      ### life time of sql
+      max-lifetime: 1200000
+      ### idle connections
+      minimum-idle: 5
+      ### if no activity then idle
+      idle-timeout: 30000
+      ### if no activity then idle
+      auto-commit: true
+
+## JPA Properties
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        show_sql: true
+        formate_sql: true
+        dialect: org.hibernate.dialect.MySQL8Dialect
+      
