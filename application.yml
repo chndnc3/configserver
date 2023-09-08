@@ -12,9 +12,11 @@ spring:
     username: root
     password: rootuser
 
+  config:
+    import:
+      - optional:configserver:http://localhost:8888
+
 ## Connection Pooling
-spring:
-  datasource:
     hikari:
       ### max connections
       maximum-pool-size: 12
@@ -30,7 +32,6 @@ spring:
       auto-commit: true
 
 ## JPA Properties
-spring:
   jpa:
     hibernate:
       ddl-auto: update
